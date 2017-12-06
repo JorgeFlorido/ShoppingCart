@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingCart.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Logic
 {
-    public class BuyLogic
+    public class BuyLogic : IBuyLogic
     {
         private IProductService _productService;
 
@@ -15,6 +15,7 @@ namespace ShoppingCart.Logic
         {
             _productService = productService;
         }
+
         public void BuyItem(int itemId)
         {
             if (itemId > 0)

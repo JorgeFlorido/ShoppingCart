@@ -8,7 +8,7 @@ using System.Web.Routing;
 
 namespace ShoppingCart.Web
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -16,6 +16,13 @@ namespace ShoppingCart.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterCustomControllerFactory();
+        }
+
+        private void RegisterCustomControllerFactory()
+        {
+            IControllerFactory factory = new CustomControllerFactory("ShoppingCart.Web.Controllers");
+            ControllerBuilder.Current.SetControllerFactory(factory);
         }
     }
 }

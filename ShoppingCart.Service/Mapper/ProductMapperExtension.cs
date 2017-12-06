@@ -1,4 +1,5 @@
-﻿using ShoppingCart.Data;
+﻿using ShoppingCart.Core;
+using ShoppingCart.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

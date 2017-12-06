@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShoppingCart.Logic;
+using ShoppingCart.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,19 @@ namespace ShoppingCart.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IProductService _productService;
+        private IBuyLogic _buyLogic;
+
+        public HomeController(IProductService productService, IBuyLogic buyLogic)
+        {
+            _productService = productService;
+            _buyLogic = buyLogic;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

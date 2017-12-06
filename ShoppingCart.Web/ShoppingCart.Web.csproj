@@ -143,7 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Factory\CustomControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +204,24 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Core\ShoppingCart.Core.csproj">
+      <Project>{6f847951-f5a1-464f-b4de-30af2cbdbf92}</Project>
+      <Name>ShoppingCart.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Data\ShoppingCart.Data.csproj">
+      <Project>{825d5df0-7c26-4497-b1cc-4f93efefd856}</Project>
+      <Name>ShoppingCart.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Logic\ShoppingCart.Logic.csproj">
+      <Project>{733d49bf-0a4e-448d-9e67-816352f3fc33}</Project>
+      <Name>ShoppingCart.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Service\ShoppingCart.Service.csproj">
+      <Project>{15faf7e1-a605-4d35-bc64-039779dc4934}</Project>
+      <Name>ShoppingCart.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

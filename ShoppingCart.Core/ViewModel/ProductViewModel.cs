@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingCart.Service
+namespace ShoppingCart.Core
 {
     public class ProductViewModel : IProductViewModel
     {
