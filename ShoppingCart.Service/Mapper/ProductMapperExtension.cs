@@ -34,5 +34,17 @@ namespace ShoppingCart.Service
 
             return productViewModel;
         }
+
+        public static Products ConvertToEntity(this ProductViewModel productVM)
+        {
+            Products product = new Products();
+
+            product.Id = productVM.Id;
+            product.Name = productVM.Name;
+            product.Description = productVM.Description;
+            product.Quantity = productVM.Quantity;
+
+            return product;
+        }
     }
 }

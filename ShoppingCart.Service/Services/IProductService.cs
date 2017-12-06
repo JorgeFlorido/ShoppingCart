@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Service
 {
-    interface IProductService
+    public interface IProductService
     {
-        ProductResponse GetAllProducts();
-        ProductResponse GetById(int id);
+        List<ProductViewModel> GetAllProducts();
+        ProductViewModel GetById(int id);
+        void Update(ProductViewModel itemId);
     }
 }

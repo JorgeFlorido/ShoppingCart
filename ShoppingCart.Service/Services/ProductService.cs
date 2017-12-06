@@ -17,58 +17,48 @@ namespace ShoppingCart.Service
             _productRepository = productRepository;
         }
 
-        public ProductResponse GetAllProducts()
+        public List<ProductViewModel> GetAllProducts()
         {
-            ProductResponse response = new ProductResponse();
+            List<ProductViewModel> itemList = new List<ProductViewModel>();
 
             try
             {
-                IList<Products> productEntities = _productRepository.GetAll().ToList();
-                response.Products = productEntities.ConvertToProductViewModel();
-                response.Confirm(true, "OK");
+                IList<Products> products = _productRepository.GetAll().ToList();
+                itemList = products.ConvertToProductViewModel().ToList();
             }
             catch (Exception e)
             {
-                response.Confirm(false, e.ToString());
             }
 
-            return response;
+            return itemList;
         }
 
-        public ProductResponse GetById(int id)
+        public ProductViewModel GetById(int id)
         {
-            ProductResponse response = new ProductResponse();
+            ProductViewModel item = new ProductViewModel();
 
             try
             {
                 Products product = _productRepository.GetById(id);
-                response.Products.Add(product.ConvertToProductViewModel());
-                response.Confirm(true, "OK");
+                item = product.ConvertToProductViewModel();
             }
             catch (Exception e)
             {
-                response.Confirm(false, e.ToString());
             }
 
-            return response;
+            return item;
         }
 
-        public ProductResponse Update(int id)
+        public void Update(ProductViewModel item)
         {
-            ProductResponse response = new ProductResponse();
-
             try
             {
-                Products product = _productRepository.GetById(id);
-                response.Products.Add(product.ConvertToProductViewModel());
-                response.Confirm(true, "OK");
+                Products product = item.ConvertToEntity();
+                _productRepository.Update(product);
             }
             catch (Exception e)
-            {
-                response.Confirm(false, e.ToString());
+            {                
             }
-
-            return response;
         }
     }
 }

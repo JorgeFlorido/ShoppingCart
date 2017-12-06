@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Service
 {
-    public class ProductViewModel
+    public class ProductViewModel : IProductViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

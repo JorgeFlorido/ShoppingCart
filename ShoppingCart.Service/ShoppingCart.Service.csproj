@@ -40,12 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\BaseResponse.cs" />
-    <Compile Include="Messages\IProductResponse.cs" />
     <Compile Include="Services\IProductService.cs" />
     <Compile Include="Mapper\ProductMapperExtension.cs" />
-    <Compile Include="Messages\ProductResponse.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="ViewModel\IProductViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
