@@ -105,9 +105,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ShoppingCart.Logic\ShoppingCart.Logic.csproj">
-      <Project>{733d49bf-0a4e-448d-9e67-816352f3fc33}</Project>
-      <Name>ShoppingCart.Logic</Name>
+    <ProjectReference Include="..\ShoppingCart.Data\ShoppingCart.Data.csproj">
+      <Project>{825d5df0-7c26-4497-b1cc-4f93efefd856}</Project>
+      <Name>ShoppingCart.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.Service\ShoppingCart.Service.csproj">
       <Project>{15faf7e1-a605-4d35-bc64-039779dc4934}</Project>

@@ -1,5 +1,4 @@
 ﻿using ShoppingCart.Data;
-using ShoppingCart.Logic;
 using ShoppingCart.Service;
 using System;
 using System.Collections.Generic;
@@ -25,9 +24,8 @@ namespace ShoppingCart.Web
             ShopEntities context = new ShopEntities();
             IRepository<Products> productRepository = new Repository<Products>(context);
             IProductService productService = new ProductService(productRepository);
-            IBuyLogic buyLogic = new BuyLogic(productService);
             Type controllerType = Type.GetType(string.Concat(_controllerNamespace, ".", controllerName, "Controller"));
-            IController controller = Activator.CreateInstance(controllerType, productService, buyLogic) as Controller;
+            IController controller = Activator.CreateInstance(controllerType, productRepository, productService) as Controller;
             return controller;
         }
 

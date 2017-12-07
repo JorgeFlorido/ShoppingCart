@@ -26,7 +26,7 @@ namespace ShoppingCart.Service
                 IList<Products> products = _productRepository.GetAll().ToList();
                 itemList = products.ConvertToProductViewModel().ToList();
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 
@@ -42,7 +42,7 @@ namespace ShoppingCart.Service
                 Products product = _productRepository.GetById(id);
                 item = product.ConvertToProductViewModel();
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 
@@ -56,7 +56,7 @@ namespace ShoppingCart.Service
                 Products product = item.ConvertToEntity();
                 _productRepository.Update(product);
             }
-            catch (Exception e)
+            catch (Exception)
             {                
             }
         }

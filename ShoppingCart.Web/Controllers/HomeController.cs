@@ -1,4 +1,4 @@
-﻿using ShoppingCart.Logic;
+﻿using ShoppingCart.Data;
 using ShoppingCart.Service;
 using System;
 using System.Collections.Generic;
@@ -10,13 +10,15 @@ namespace ShoppingCart.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IDatabaseContext _productContext;
         private IProductService _productService;
-        private IBuyLogic _buyLogic;
 
-        public HomeController(IProductService productService, IBuyLogic buyLogic)
+        public HomeController(
+            IDatabaseContext productContext,
+            IProductService productService)
         {
             _productService = productService;
-            _buyLogic = buyLogic;
+            _productContext = productContext;
         }
 
         public ActionResult Index()

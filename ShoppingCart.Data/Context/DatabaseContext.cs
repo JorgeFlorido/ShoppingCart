@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingCart.Core.Domain
+namespace ShoppingCart.Data
 {
-    public class ItemList
+    public class DatabaseContext : ShopEntities, IDatabaseContext
     {
-
     }
 }
