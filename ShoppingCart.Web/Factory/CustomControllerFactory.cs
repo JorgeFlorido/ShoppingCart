@@ -25,7 +25,7 @@ namespace ShoppingCart.Web
             IRepository<Products> productRepository = new Repository<Products>(context);
             IProductService productService = new ProductService(productRepository);
             Type controllerType = Type.GetType(string.Concat(_controllerNamespace, ".", controllerName, "Controller"));
-            IController controller = Activator.CreateInstance(controllerType, productRepository, productService) as Controller;
+            IController controller = Activator.CreateInstance(controllerType, productService) as Controller;
             return controller;
         }
 

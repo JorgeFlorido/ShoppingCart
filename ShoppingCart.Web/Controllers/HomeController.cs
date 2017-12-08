@@ -10,21 +10,16 @@ namespace ShoppingCart.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IDatabaseContext _productContext;
         private IProductService _productService;
 
-        public HomeController(
-            IDatabaseContext productContext,
-            IProductService productService)
+        public HomeController(IProductService productService)
         {
             _productService = productService;
-            _productContext = productContext;
         }
 
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }
