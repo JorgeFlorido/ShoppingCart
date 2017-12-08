@@ -13,11 +13,10 @@ namespace ShoppingCart.Web.Tests.Controllers
         [TestMethod]
         public void Index()
         {
-            var  = new Mock<IRepository<Products>>();
             var productService = new Mock<IProductService>();
 
             // Arrange
-            HomeController controller = new HomeController(productService.Object, productRepository.Object);
+            HomeController controller = new HomeController(productService.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
