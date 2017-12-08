@@ -9,6 +9,6 @@ namespace ShoppingCart.Data
 {
     public interface IDatabaseContext
     {
-        DbSet<Products> Products { get; set; }
+
     }
 }
