@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\IDatabaseContext.cs" />
+    <Compile Include="Context\IProductContext.cs" />
+    <Compile Include="Context\ProductContext.cs" />
     <Compile Include="Products.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>

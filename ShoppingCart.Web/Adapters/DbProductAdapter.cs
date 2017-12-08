@@ -2,7 +2,7 @@
 
 namespace ShoppingCart.Web
 {
-    public class DatabaseAdapter : DatabaseContext, IDatabaseContext
+    public class DbProductAdapter : ProductContext, IProductContext
     {
     }
 }
