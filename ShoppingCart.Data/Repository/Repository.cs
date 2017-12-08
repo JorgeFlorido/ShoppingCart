@@ -10,10 +10,10 @@ namespace ShoppingCart.Data
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private ShopEntities _context = null;
+        private IDatabaseContext _context = null;
         private IDbSet<T> _dbSet;
 
-        public Repository(ShopEntities context)
+        public Repository(IDatabaseContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();

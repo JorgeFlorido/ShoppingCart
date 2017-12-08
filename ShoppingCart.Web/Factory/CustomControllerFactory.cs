@@ -21,7 +21,7 @@ namespace ShoppingCart.Web
 
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
-            DatabaseContext context = new DatabaseContext();
+            IDatabaseContext context = new DatabaseAdapter();
             IRepository<Products> productRepository = new Repository<Products>(context);
             IProductService productService = new ProductService(productRepository);
             Type controllerType = Type.GetType(string.Concat(_controllerNamespace, ".", controllerName, "Controller"));
