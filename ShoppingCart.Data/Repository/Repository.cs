@@ -21,7 +21,7 @@ namespace ShoppingCart.Data
 
         public IEnumerable<T> GetAll()
         {
-            return _dbSet.ToList(); ;
+            return _dbSet.ToList();
         }
 
         public T GetById(object id)

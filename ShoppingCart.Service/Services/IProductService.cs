@@ -1,15 +1,10 @@
-﻿using ShoppingCart.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ShoppingCart.Service
 {
     public interface IProductService
     {
-        List<ProductViewModel> GetAllProducts();
+        IEnumerable<ProductViewModel> GetAllProducts();
         ProductViewModel GetById(int id);
         void Update(ProductViewModel itemId);
     }

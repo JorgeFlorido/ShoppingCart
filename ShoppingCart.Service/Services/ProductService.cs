@@ -1,10 +1,6 @@
-﻿using ShoppingCart.Core;
-using ShoppingCart.Data;
+﻿using ShoppingCart.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingCart.Service
 {
@@ -17,14 +13,14 @@ namespace ShoppingCart.Service
             _productRepository = productRepository;
         }
 
-        public List<ProductViewModel> GetAllProducts()
+        public IEnumerable<ProductViewModel> GetAllProducts()
         {
-            List<ProductViewModel> itemList = new List<ProductViewModel>();
+            IEnumerable<ProductViewModel> itemList = new List<ProductViewModel>();
 
             try
             {
-                IList<Products> products = _productRepository.GetAll().ToList();
-                itemList = products.ConvertToProductViewModel().ToList();
+                IEnumerable<Products> products = _productRepository.GetAll();
+                itemList = products.ConvertToProductViewModel();
             }
             catch (Exception)
             {

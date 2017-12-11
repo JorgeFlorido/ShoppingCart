@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.Core
+﻿namespace ShoppingCart.Service
 {
     public interface IProductViewModel
     {

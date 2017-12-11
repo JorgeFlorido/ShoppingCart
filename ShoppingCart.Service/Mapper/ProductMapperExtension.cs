@@ -1,16 +1,11 @@
-﻿using ShoppingCart.Core;
-using ShoppingCart.Data;
-using System;
+﻿using ShoppingCart.Data;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingCart.Service
 {
     public static class ProductMapperExtension
     {
-        public static IList<ProductViewModel> ConvertToProductViewModel(this IList<Products> products)
+        public static IEnumerable<ProductViewModel> ConvertToProductViewModel(this IEnumerable<Products> products)
         {
             IList<ProductViewModel> productsViewModel = new List<ProductViewModel>();
 

@@ -1,9 +1,4 @@
-﻿using ShoppingCart.Data;
-using ShoppingCart.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ShoppingCart.Service;
 using System.Web.Mvc;
 
 namespace ShoppingCart.Web.Controllers
@@ -19,7 +14,8 @@ namespace ShoppingCart.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var items = _productService.GetAllProducts();
+            return View(items);
         }
     }
 }
