@@ -6,6 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="3e4bfd8a56bc451d81209ca0308037fe" Name="Diagram1">
         <EntityTypeShape EntityType="ShopModel.Products" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Purchase" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ShopModel.Customer" Width="1.5" PointX="0.75" PointY="3.875" />
+        <AssociationConnector Association="ShopModel.FK_Purchase_ToCustomer" />
+        <AssociationConnector Association="ShopModel.FK_Purchase_ToProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

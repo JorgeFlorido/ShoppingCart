@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ShoppingCart.Service.ProductViewModel>
+
+@{
+    ViewBag.Title = "Beer Shop";
+}
+
+<div class="jumbotron">
+    <h1>Shopping Cart</h1>
+    <p class="lead">Welcome</p>
+</div>
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Id)
+            </td>
+            <td>
+                <b>@Html.DisplayFor(model => item.Name)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Quantity)
+            </td>
+            <th>
+                @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
+                {
+                    @Html.HiddenFor(m => item.Id);
+                    <button type="submit" value="Buy" @((item.IsAvailable) ? "" : "disabled") %>Buy</button>
+                }
+            </th>
+        </tr>
+        }
+    </table>
+</div>

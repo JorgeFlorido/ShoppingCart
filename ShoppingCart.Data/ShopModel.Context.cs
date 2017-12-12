@@ -26,5 +26,7 @@ namespace ShoppingCart.Data
         }
     
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Purchase> Purchase { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
     }
 }

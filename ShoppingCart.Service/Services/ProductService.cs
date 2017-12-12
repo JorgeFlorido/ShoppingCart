@@ -56,5 +56,20 @@ namespace ShoppingCart.Service
             {                
             }
         }
+
+        public bool AddToCart(ProductViewModel item)
+        {
+            Products product = _productRepository.GetById(item.Id);
+
+            bool canBuy = (product != null && product.Quantity > 0);
+
+            if (canBuy)
+            {
+                product.Quantity--;
+                _productRepository.Update(product);
+            }
+
+            return canBuy;
+        }
     }
 }

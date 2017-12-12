@@ -16,10 +16,10 @@ namespace ShoppingCart.Web.Tests.Controllers
             var productService = new Mock<IProductService>();
 
             // Arrange
-            HomeController controller = new HomeController(productService.Object);
+            ProductController controller = new ProductController(productService.Object);
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.ProductList() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

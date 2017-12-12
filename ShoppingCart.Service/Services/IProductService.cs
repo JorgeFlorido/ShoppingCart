@@ -7,5 +7,6 @@ namespace ShoppingCart.Service
         IEnumerable<ProductViewModel> GetAllProducts();
         ProductViewModel GetById(int id);
         void Update(ProductViewModel itemId);
+        bool AddToCart(ProductViewModel product);
     }
 }
