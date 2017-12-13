@@ -64,13 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\CustomerContext.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
-    <Compile Include="Context\IDatabaseContext.cs" />
-    <Compile Include="Context\IProductContext.cs" />
+    <Compile Include="Context\PurchaseContext.cs" />
+    <Compile Include="Interface\ICustomerContext.cs" />
+    <Compile Include="Interface\IDatabaseContext.cs" />
+    <Compile Include="Interface\IProductContext.cs" />
     <Compile Include="Context\ProductContext.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IPurchaseContext.cs" />
     <Compile Include="Products.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
@@ -78,7 +82,7 @@
     <Compile Include="Purchase.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="ShopModel.Context.cs">
       <AutoGen>True</AutoGen>

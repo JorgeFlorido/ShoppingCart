@@ -4,12 +4,12 @@ namespace ShoppingCart.Data
 {
     public class ProductContext : DatabaseContext
     {
-        public IEnumerable<Products> GetProducts()
+        public IEnumerable<Products> GetAllProducts()
         {
             return Set<Products>();
         }
 
-        public object GetEntry(object entity)
+        public object GetProduct(object entity)
         {
             return Entry(entity);
         }
