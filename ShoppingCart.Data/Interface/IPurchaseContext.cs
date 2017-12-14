@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace ShoppingCart.Data.Interface
+namespace ShoppingCart.Data
 {
     public interface IPurchaseContext
     {
-        IEnumerable<Purchase> GetAllProducts();
-        object GetProduct(object entity);
+        IEnumerable<Purchase> GetAllPurchases();
+        object GetPurchase(object entity);
         int Save();
     }
 }

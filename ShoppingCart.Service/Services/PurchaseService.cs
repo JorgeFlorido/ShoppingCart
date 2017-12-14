@@ -28,33 +28,5 @@ namespace ShoppingCart.Service
 
             return purchaseList;
         }
-
-        public PurchaseViewModel GetById(int id)
-        {
-            PurchaseViewModel purchaseVM = new PurchaseViewModel();
-
-            try
-            {
-                Purchase purchase = _purchaseRepository.GetById(id);
-                purchaseVM = purchase.ConvertToPurchaseViewModel();
-            }
-            catch (Exception)
-            {
-            }
-
-            return purchaseVM;
-        }
-
-        public void Update(PurchaseViewModel purchaseVM)
-        {
-            try
-            {
-                Purchase purchase = purchaseVM.ConvertToEntity();
-                _purchaseRepository.Update(purchase);
-            }
-            catch (Exception)
-            {
-            }
-        }
     }
 }

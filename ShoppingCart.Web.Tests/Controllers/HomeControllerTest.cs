@@ -14,9 +14,10 @@ namespace ShoppingCart.Web.Tests.Controllers
         public void Index()
         {
             var productService = new Mock<IProductService>();
+            var customerService = new Mock<ICustomerService>();
 
             // Arrange
-            ProductController controller = new ProductController(productService.Object);
+            ProductController controller = new ProductController(productService.Object, customerService.Object);
 
             // Act
             ViewResult result = controller.ProductList() as ViewResult;
@@ -24,6 +25,5 @@ namespace ShoppingCart.Web.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-
     }
 }

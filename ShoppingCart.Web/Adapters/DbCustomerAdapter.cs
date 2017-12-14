@@ -1,6 +1,6 @@
 ﻿using ShoppingCart.Data;
 
-namespace ShoppingCart.Web.Adapters
+namespace ShoppingCart.Web
 {
     public class DbCustomerAdapter : CustomerContext, ICustomerContext
     {

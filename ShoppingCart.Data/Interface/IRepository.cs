@@ -7,5 +7,6 @@ namespace ShoppingCart.Data
         IEnumerable<T> GetAll();
         T GetById(object id);
         void Update(T entity);
+        void Add(T entity);
     }
 }

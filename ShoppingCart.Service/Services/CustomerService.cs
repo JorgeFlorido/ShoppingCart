@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace ShoppingCart.Service.Services
+namespace ShoppingCart.Service
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         private IRepository<Customer> _customerRepository;
 
@@ -13,7 +13,7 @@ namespace ShoppingCart.Service.Services
             _customerRepository = customerRepository;
         }
 
-        public IEnumerable<CustomerViewModel> GetAllProducts()
+        public IEnumerable<CustomerViewModel> GetAllCustomers()
         {
             IEnumerable<CustomerViewModel> customerListVM = new List<CustomerViewModel>();
 

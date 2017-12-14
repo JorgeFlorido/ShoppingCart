@@ -37,5 +37,14 @@ namespace ShoppingCart.Data
                 _context.SaveChanges();
             }
         }
+
+        public void Add(T entity)
+        {
+            if (entity != null)
+            {
+                _dbSet.Add(entity);
+                _context.SaveChanges();
+            }
+        }
     }
 }

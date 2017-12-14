@@ -7,10 +7,14 @@ namespace ShoppingCart.Service
     public class ProductService : IProductService
     {
         private IRepository<Products> _productRepository;
+        private IRepository<Purchase> _purchaseRespository;
 
-        public ProductService(IRepository<Products> productRepository)
+        public ProductService(
+            IRepository<Products> productRepository,
+            IRepository<Purchase> purchaseRepository)
         {
             _productRepository = productRepository;
+            _purchaseRespository = purchaseRepository;
         }
 
         public IEnumerable<ProductViewModel> GetAllProducts()
@@ -60,13 +64,16 @@ namespace ShoppingCart.Service
         public bool AddToCart(ProductViewModel item)
         {
             Products product = _productRepository.GetById(item.Id);
+            Purchase purchase = new Purchase();
 
-            bool canBuy = (product != null && product.Quantity > 0);
+            bool canBuy = (product != null && product.Quantity > 0 && product.Quantity >= item.QuantityToBuy);
 
             if (canBuy)
             {
-                product.Quantity--;
-                _productRepository.Update(product);
+                purchase.ProductID = item.Id;
+                purchase.CustomerID = 1;
+                purchase.Finished = false;
+                _purchaseRespository.Add(purchase);
             }
 
             return canBuy;

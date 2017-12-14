@@ -19,11 +19,20 @@ namespace ShoppingCart.Web
 
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
-            IDatabaseContext context = new DbProductAdapter();
-            IRepository<Products> productRepository = new Repository<Products>(context);
-            IProductService productService = new ProductService(productRepository);
+            IDatabaseContext productContext = new DbProductAdapter();
+            IDatabaseContext purchasecontext = new DbPurchaseAdapter();
+            IDatabaseContext customerContext = new DbCustomerAdapter();
+
+            IRepository<Products> productRepository = new Repository<Products>(productContext);
+            IRepository<Purchase> purchaseRepository = new Repository<Purchase>(purchasecontext);
+            IRepository<Customer> customerRepository = new Repository<Customer>(customerContext);
+
+            IProductService productService = new ProductService(productRepository, purchaseRepository);
+            ICustomerService customerService = new CustomerService(customerRepository);
+
             Type controllerType = Type.GetType(string.Concat(_controllerNamespace, ".", controllerName, "Controller"));
-            IController controller = Activator.CreateInstance(controllerType, productService) as Controller;
+            IController controller = Activator.CreateInstance(controllerType, productService, customerService) as Controller;
+
             return controller;
         }
 

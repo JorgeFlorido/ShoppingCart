@@ -7,5 +7,7 @@
         bool IsAvailable { get; set; }
         string Name { get; set; }
         int Quantity { get; set; }
+        int QuantityToBuy { get; set; }
+        int BuyerId { get; set; }
     }
 }

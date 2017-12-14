@@ -22,7 +22,9 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                Stock
+            </th>
+            <th>
             </th>
             <th>
             </th>
@@ -43,13 +45,17 @@
             <td>
                 @Html.DisplayFor(model => item.Quantity)
             </td>
-            <th>
-                @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
-                {
-                    @Html.HiddenFor(m => item.Id);
-                    <button type="submit" value="Buy" @((item.IsAvailable) ? "" : "disabled") %>Buy</button>
-                }
-            </th>
+            @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
+            {
+            <td>
+                @Html.DropDownListFor(model => item.QuantityToBuy, new SelectList(Enumerable.Range(1, item.Quantity)))
+            </td>
+            <td>
+                @Html.HiddenFor(m => item.Id)
+                @Html.HiddenFor(m => item.QuantityToBuy)
+                <button type="submit" value="Buy" @((item.IsAvailable) ? "" : "disabled") %>Buy</button>
+            </td>
+            }
         </tr>
         }
     </table>

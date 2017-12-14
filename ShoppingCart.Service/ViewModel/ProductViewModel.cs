@@ -7,5 +7,7 @@
         public string Description { get; set; }
         public int Quantity { get; set; }
         public bool IsAvailable { get; set; }
+        public int QuantityToBuy { get; set; }
+        public int BuyerId { get; set; }
     }
 }
