@@ -142,11 +142,18 @@
   <ItemGroup>
     <Compile Include="Adapters\DbCustomerAdapter.cs" />
     <Compile Include="Adapters\DbPurchaseAdapter.cs" />
+    <Compile Include="App_GlobalResources\FrontEndLabels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontEndLabels.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ControllerNames.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Adapters\DbProductAdapter.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Factory\CustomControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +195,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
+    <Content Include="Views\User\UserLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -215,6 +223,12 @@
       <Project>{15faf7e1-a605-4d35-bc64-039779dc4934}</Project>
       <Name>ShoppingCart.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\FrontEndLabels.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>FrontEndLabels.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

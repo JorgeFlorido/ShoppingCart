@@ -14,10 +14,9 @@ namespace ShoppingCart.Web.Tests.Controllers
         public void Index()
         {
             var productService = new Mock<IProductService>();
-            var customerService = new Mock<ICustomerService>();
 
             // Arrange
-            ProductController controller = new ProductController(productService.Object, customerService.Object);
+            ProductController controller = new ProductController(productService.Object);
 
             // Act
             ViewResult result = controller.ProductList() as ViewResult;

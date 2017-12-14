@@ -19,21 +19,33 @@ namespace ShoppingCart.Web
 
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
-            IDatabaseContext productContext = new DbProductAdapter();
-            IDatabaseContext purchasecontext = new DbPurchaseAdapter();
-            IDatabaseContext customerContext = new DbCustomerAdapter();
-
-            IRepository<Products> productRepository = new Repository<Products>(productContext);
-            IRepository<Purchase> purchaseRepository = new Repository<Purchase>(purchasecontext);
-            IRepository<Customer> customerRepository = new Repository<Customer>(customerContext);
-
-            IProductService productService = new ProductService(productRepository, purchaseRepository);
-            ICustomerService customerService = new CustomerService(customerRepository);
-
             Type controllerType = Type.GetType(string.Concat(_controllerNamespace, ".", controllerName, "Controller"));
-            IController controller = Activator.CreateInstance(controllerType, productService, customerService) as Controller;
 
-            return controller;
+            switch (controllerName)
+            {
+                case "User":
+
+                    IDatabaseContext customerContext = new DbCustomerAdapter();
+
+                    IRepository<Customer> customerRepository = new Repository<Customer>(customerContext);
+
+                    ICustomerService customerService = new CustomerService(customerRepository);
+
+                    return Activator.CreateInstance(controllerType, customerService) as Controller;
+
+                case "Product":
+
+                    IDatabaseContext productContext = new DbProductAdapter();
+                    IDatabaseContext purchasecontext = new DbPurchaseAdapter();
+
+                    IRepository<Products> productRepository = new Repository<Products>(productContext);
+                    IRepository<Purchase> purchaseRepository = new Repository<Purchase>(purchasecontext);
+
+                    IProductService productService = new ProductService(productRepository, purchaseRepository);
+                    return Activator.CreateInstance(controllerType, productService) as Controller;
+            }
+
+            return Activator.CreateInstance(controllerType, "") as Controller;          
         }
 
         public SessionStateBehavior GetControllerSessionBehavior(RequestContext requestContext, string controllerName)
