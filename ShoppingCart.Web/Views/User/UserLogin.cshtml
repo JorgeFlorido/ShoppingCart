@@ -1,11 +1,22 @@
-﻿@model IEnumerable<ShoppingCart.Service.CustomerViewModel>
+﻿@model ShoppingCart.Service.CustomerListViewModel
 @{
     ViewBag.Title = "UserLogin";
 }
 
 <h2>UserLogin</h2>
-
-<div>
-    
-</div>
+<tr>
+    <td>
+        <p>@Resources.FrontEndLabels.SelectUser</p>
+    </td>
+    @using (Html.BeginForm("ProductList", "Product", FormMethod.Post))
+    {
+        <td>
+            @Html.DropDownListFor(model => model.currentUser, new SelectList(Model.userList, "Id", "Name"))
+        </td>
+        <td>
+            @Html.HiddenFor(model => model.currentUser)
+            <button type="submit">@Resources.FrontEndLabels.Go</button>
+        </td>
+    }
+    </tr>
 

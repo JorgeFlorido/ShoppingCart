@@ -4,6 +4,6 @@ namespace ShoppingCart.Service
 {
     public interface ICustomerService
     {
-        IEnumerable<CustomerViewModel> GetAllCustomers();
+        CustomerListViewModel GetAllCustomers();
     }
 }

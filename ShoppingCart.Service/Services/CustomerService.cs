@@ -13,14 +13,15 @@ namespace ShoppingCart.Service
             _customerRepository = customerRepository;
         }
 
-        public IEnumerable<CustomerViewModel> GetAllCustomers()
+        public CustomerListViewModel GetAllCustomers()
         {
-            IEnumerable<CustomerViewModel> customerListVM = new List<CustomerViewModel>();
+            CustomerListViewModel customerListVM = new CustomerListViewModel();
 
             try
             {
                 IEnumerable<Customer> customers = _customerRepository.GetAll();
-                customerListVM = customers.ConvertToCustomerViewModel();
+                customerListVM.userList = customers.ConvertToCustomerViewModel();
+                customerListVM.currentUser = 0;
             }
             catch (Exception)
             {
