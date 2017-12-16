@@ -21,7 +21,7 @@ namespace ShoppingCart.Service
             {
                 IEnumerable<Customer> customers = _customerRepository.GetAll();
                 customerListVM.userList = customers.ConvertToCustomerViewModel();
-                customerListVM.currentUser = 0;
+                customerListVM.selectedUser = 0;
             }
             catch (Exception)
             {

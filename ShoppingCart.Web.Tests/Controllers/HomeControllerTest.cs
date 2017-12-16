@@ -19,7 +19,7 @@ namespace ShoppingCart.Web.Tests.Controllers
             ProductController controller = new ProductController(productService.Object);
 
             // Act
-            ViewResult result = controller.ProductList() as ViewResult;
+            ViewResult result = controller.ProductList(1) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

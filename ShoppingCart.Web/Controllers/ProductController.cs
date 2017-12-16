@@ -1,4 +1,5 @@
 ﻿using ShoppingCart.Service;
+using System;
 using System.Web.Mvc;
 
 namespace ShoppingCart.Web.Controllers
@@ -14,6 +15,7 @@ namespace ShoppingCart.Web.Controllers
 
         public ActionResult ProductList()
         {
+            TempData["UserId"] = Request.QueryString["selectedUser"];
             var items = _productService.GetAllProducts();
             return View(items);
         }
@@ -21,6 +23,7 @@ namespace ShoppingCart.Web.Controllers
         [HttpPost]
         public ActionResult AddToCart(ProductViewModel item)
         {
+            var id = Int32.Parse(TempData["UserId"].ToString());
             _productService.AddToCart(item);
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }

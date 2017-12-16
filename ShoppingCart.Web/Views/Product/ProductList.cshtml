@@ -45,10 +45,11 @@
             <td>
                 @Html.DisplayFor(model => item.Quantity)
             </td>
+
             @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
             {
             <td>
-                @Html.DropDownListFor(model => item.QuantityToBuy, new SelectList(Enumerable.Range(1, item.Quantity)))
+                @Html.DropDownListFor(m => item.QuantityToBuy, new SelectList(Enumerable.Range(1, item.Quantity)))
             </td>
             <td>
                 @Html.HiddenFor(m => item.Id)
@@ -56,6 +57,7 @@
                 <button type="submit" value="Buy" @((item.IsAvailable) ? "" : "disabled") %>Buy</button>
             </td>
             }
+
         </tr>
         }
         </tbody>

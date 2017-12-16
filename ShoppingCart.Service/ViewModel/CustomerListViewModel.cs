@@ -5,6 +5,6 @@ namespace ShoppingCart.Service
     public class CustomerListViewModel
     {
         public IEnumerable<CustomerViewModel> userList;
-        public int currentUser;
+        public int selectedUser;
     }
 }
