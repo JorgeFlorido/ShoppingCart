@@ -54,7 +54,7 @@ namespace ShoppingCart.Service
             try
             {
                 Products product = item.ConvertToEntity();
-                //_productRepository.Update(product);
+                _productRepository.Update(product);
             }
             catch (Exception)
             {                

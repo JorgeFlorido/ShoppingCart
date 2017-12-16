@@ -18,6 +18,7 @@ namespace ShoppingCart.Data
         public int ProductID { get; set; }
         public int CustomerID { get; set; }
         public bool Finished { get; set; }
+        public int Quantity { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Products Products { get; set; }

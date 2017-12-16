@@ -19,7 +19,7 @@ namespace ShoppingCart.Service
 
             try
             {
-                IEnumerable<Customer> customers = _customerRepository.GetAllCustomers();
+                IEnumerable<Customer> customers = _customerRepository.GetAll();
                 customerListVM.userList = customers.ConvertToCustomerViewModel();
                 customerListVM.selectedUser = 0;
             }

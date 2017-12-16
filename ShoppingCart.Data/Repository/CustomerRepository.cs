@@ -4,14 +4,9 @@ namespace ShoppingCart.Data
 {
     public class CustomerRepository : DatabaseContext
     {
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<Customer> GetAll()
         {
             return Set<Customer>();
-        }
-
-        public object GetCustomer(object entity)
-        {
-            return Entry(entity);
         }
     }
 }

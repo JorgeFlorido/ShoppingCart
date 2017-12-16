@@ -16,13 +16,5 @@ namespace ShoppingCart.Data
             return Set<Products>().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void Update(Products entity)
-        {
-            if (entity != null)
-            {
-                Entry(entity).State = EntityState.Modified;
-                SaveChanges(); 
-            }
-        }
     }
 }

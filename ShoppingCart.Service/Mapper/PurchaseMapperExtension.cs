@@ -23,6 +23,7 @@ namespace ShoppingCart.Service
 
             purchaseViewModel.Id = purchase.Id;
             purchaseViewModel.ProductID = purchase.ProductID;
+            purchaseViewModel.ProductName = purchase.Products.Name;
             purchaseViewModel.CustomerID = purchase.CustomerID;
             purchaseViewModel.Finished = purchase.Finished;
 

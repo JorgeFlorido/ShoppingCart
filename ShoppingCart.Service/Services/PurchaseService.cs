@@ -1,15 +1,14 @@
 ﻿using ShoppingCart.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ShoppingCart.Service
 {
-    public class PurchaseService
+    public class PurchaseService : IPurchaseService
     {
-        private IRepository<Purchase> _purchaseRepository;
+        private IPurchaseRepository _purchaseRepository;
 
-        public PurchaseService(IRepository<Purchase> purchaseRepository)
+        public PurchaseService(IPurchaseRepository purchaseRepository)
         {
             _purchaseRepository = purchaseRepository;
         }
@@ -20,14 +19,24 @@ namespace ShoppingCart.Service
 
             try
             {
-                IEnumerable<Purchase> purchases = _purchaseRepository.GetAll();
+                IEnumerable<Purchase> purchases = _purchaseRepository.GetUserPurchases(UserId);
                 purchaseList = purchases.ConvertToPurchaseViewModel();
             }
             catch (Exception)
             {
             }
 
-            return purchaseList.Where(x => x.CustomerID == UserId);
+            return purchaseList;
+        }
+
+        public void FinishPurchases(IEnumerable<PurchaseViewModel> purchasesVM)
+        {
+            foreach (var pvm in purchasesVM)
+            {
+                var p = pvm.ConvertToEntity();
+                p.Finished = true;
+                _purchaseRepository.Update(p);
+            }
         }
     }
 }

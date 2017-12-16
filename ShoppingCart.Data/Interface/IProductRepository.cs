@@ -6,6 +6,6 @@ namespace ShoppingCart.Data
     {
         IEnumerable<Products> GetAll();
         Products Get(int id);
-        void Update(Products entity);
+        void Update(object entity);
     }
 }

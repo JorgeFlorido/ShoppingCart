@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Interface\ICustomerService.cs" />
     <Compile Include="Interface\IProductService.cs" />
+    <Compile Include="Interface\IPurchaseService.cs" />
     <Compile Include="Interface\IPurchaseViewModel.cs" />
     <Compile Include="Mapper\CustomerMapperExtension.cs" />
     <Compile Include="Mapper\ProductMapperExtension.cs" />

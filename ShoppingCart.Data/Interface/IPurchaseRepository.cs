@@ -4,10 +4,8 @@ namespace ShoppingCart.Data
 {
     public interface IPurchaseRepository
     {
-        IEnumerable<Purchase> GetAll();
-        object Get(object entity);
-        int Save();
-        IEnumerable<Purchase> GetUserPurchases(int userId);
+        IEnumerable<Purchase> GetUserPurchases(int id);
         void Add(Purchase purchase);
+        void Update(object entity);
     }
 }
