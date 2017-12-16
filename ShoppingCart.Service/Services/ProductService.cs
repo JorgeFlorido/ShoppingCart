@@ -6,12 +6,12 @@ namespace ShoppingCart.Service
 {
     public class ProductService : IProductService
     {
-        private IRepository<Products> _productRepository;
-        private IRepository<Purchase> _purchaseRespository;
+        private IProductRepository _productRepository;
+        private IPurchaseRepository _purchaseRespository;
 
         public ProductService(
-            IRepository<Products> productRepository,
-            IRepository<Purchase> purchaseRepository)
+            IProductRepository productRepository,
+            IPurchaseRepository purchaseRepository)
         {
             _productRepository = productRepository;
             _purchaseRespository = purchaseRepository;
@@ -39,7 +39,7 @@ namespace ShoppingCart.Service
 
             try
             {
-                Products product = _productRepository.GetById(id);
+                Products product = _productRepository.Get(id);
                 item = product.ConvertToProductViewModel();
             }
             catch (Exception)
@@ -54,16 +54,16 @@ namespace ShoppingCart.Service
             try
             {
                 Products product = item.ConvertToEntity();
-                _productRepository.Update(product);
+                //_productRepository.Update(product);
             }
             catch (Exception)
             {                
             }
         }
 
-        public bool AddToCart(ProductViewModel item)
+        public bool AddToCart(ProductViewModel item, int customerId)
         {
-            Products product = _productRepository.GetById(item.Id);
+            Products product = _productRepository.Get(item.Id);
             Purchase purchase = new Purchase();
 
             bool canBuy = (product != null && product.Quantity > 0 && product.Quantity >= item.QuantityToBuy);
@@ -71,7 +71,7 @@ namespace ShoppingCart.Service
             if (canBuy)
             {
                 purchase.ProductID = item.Id;
-                purchase.CustomerID = 1;
+                purchase.CustomerID = customerId;
                 purchase.Finished = false;
                 _purchaseRespository.Add(purchase);
             }

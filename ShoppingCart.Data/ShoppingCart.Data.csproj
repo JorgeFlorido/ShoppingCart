@@ -64,17 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\CustomerContext.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
-    <Compile Include="Context\PurchaseContext.cs" />
-    <Compile Include="Interface\ICustomerContext.cs" />
-    <Compile Include="Interface\IDatabaseContext.cs" />
-    <Compile Include="Interface\IProductContext.cs" />
-    <Compile Include="Context\ProductContext.cs" />
+    <Compile Include="Repository\PurchaseRepository.cs" />
+    <Compile Include="Interface\ICustomerRepository.cs" />
+    <Compile Include="Context\IDatabaseContext.cs" />
+    <Compile Include="Interface\IProductRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IPurchaseContext.cs" />
+    <Compile Include="Interface\IPurchaseRepository.cs" />
     <Compile Include="Products.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>

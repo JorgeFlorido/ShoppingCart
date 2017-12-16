@@ -24,7 +24,7 @@ namespace ShoppingCart.Web.Controllers
         public ActionResult AddToCart(ProductViewModel item)
         {
             var id = Int32.Parse(TempData["UserId"].ToString());
-            _productService.AddToCart(item);
+            _productService.AddToCart(item, id);
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
     }

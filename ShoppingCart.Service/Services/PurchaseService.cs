@@ -1,6 +1,7 @@
 ﻿using ShoppingCart.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ShoppingCart.Service
 {
@@ -13,7 +14,7 @@ namespace ShoppingCart.Service
             _purchaseRepository = purchaseRepository;
         }
 
-        public IEnumerable<PurchaseViewModel> GetAllPurchases()
+        public IEnumerable<PurchaseViewModel> GetUserPurchases(int UserId)
         {
             IEnumerable<PurchaseViewModel> purchaseList = new List<PurchaseViewModel>();
 
@@ -26,7 +27,7 @@ namespace ShoppingCart.Service
             {
             }
 
-            return purchaseList;
+            return purchaseList.Where(x => x.CustomerID == UserId);
         }
     }
 }

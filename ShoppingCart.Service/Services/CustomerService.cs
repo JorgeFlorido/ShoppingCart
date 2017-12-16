@@ -6,9 +6,9 @@ namespace ShoppingCart.Service
 {
     public class CustomerService : ICustomerService
     {
-        private IRepository<Customer> _customerRepository;
+        private ICustomerRepository _customerRepository;
 
-        public CustomerService(IRepository<Customer> customerRepository)
+        public CustomerService(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
         }
@@ -19,7 +19,7 @@ namespace ShoppingCart.Service
 
             try
             {
-                IEnumerable<Customer> customers = _customerRepository.GetAll();
+                IEnumerable<Customer> customers = _customerRepository.GetAllCustomers();
                 customerListVM.userList = customers.ConvertToCustomerViewModel();
                 customerListVM.selectedUser = 0;
             }
@@ -28,22 +28,6 @@ namespace ShoppingCart.Service
             }
 
             return customerListVM;
-        }
-
-        public CustomerViewModel GetById(int id)
-        {
-            CustomerViewModel customerVM = new CustomerViewModel();
-
-            try
-            {
-                Customer customer = _customerRepository.GetById(id);
-                customerVM = customer.ConvertToCustomerViewModel();
-            }
-            catch (Exception)
-            {
-            }
-
-            return customerVM;
         }
     }
 }

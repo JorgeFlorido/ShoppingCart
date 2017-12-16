@@ -25,24 +25,21 @@ namespace ShoppingCart.Web
             {
                 case "User":
 
-                    IDatabaseContext customerContext = new DbCustomerAdapter();
-
-                    IRepository<Customer> customerRepository = new Repository<Customer>(customerContext);
-
+                    ICustomerRepository customerRepository = new DbCustomerAdapter();
                     ICustomerService customerService = new CustomerService(customerRepository);
 
                     return Activator.CreateInstance(controllerType, customerService) as Controller;
 
                 case "Product":
 
-                    IDatabaseContext productContext = new DbProductAdapter();
-                    IDatabaseContext purchasecontext = new DbPurchaseAdapter();
-
-                    IRepository<Products> productRepository = new Repository<Products>(productContext);
-                    IRepository<Purchase> purchaseRepository = new Repository<Purchase>(purchasecontext);
-
+                    IProductRepository productRepository = new DbProductAdapter();
+                    IPurchaseRepository purchaseRepository = new DbPurchaseAdapter();
                     IProductService productService = new ProductService(productRepository, purchaseRepository);
+
                     return Activator.CreateInstance(controllerType, productService) as Controller;
+
+                default:
+                    break;
             }
 
             return Activator.CreateInstance(controllerType, "") as Controller;          
