@@ -61,18 +61,22 @@ namespace ShoppingCart.Service
             }
         }
 
-        public bool AddToCart(ProductViewModel item, int customerId)
+        public bool AddToCart(ProductViewModel item)
         {
-            Products product = _productRepository.Get(item.Id);
-            Purchase purchase = new Purchase();
+            Products product = _productRepository.Get(item.Id);            
 
             bool canBuy = (product != null && product.Quantity > 0 && product.Quantity >= item.QuantityToBuy);
 
             if (canBuy)
             {
-                purchase.ProductID = item.Id;
-                purchase.CustomerID = customerId;
-                purchase.Finished = false;
+                var purchase = new Purchase
+                {
+                    CustomerID = item.BuyerId,
+                    Finished = false,
+                    ProductID = item.Id,
+                    Quantity = item.QuantityToBuy
+                };
+
                 _purchaseRespository.Add(purchase);
             }
 

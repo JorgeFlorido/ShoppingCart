@@ -2,7 +2,7 @@
 
 namespace ShoppingCart.Data
 {
-    public class DatabaseContext : ShopEntities, IDatabaseContext
+    public class DatabaseContext : ShopEntities
     {
         public void Update(object entity)
         {

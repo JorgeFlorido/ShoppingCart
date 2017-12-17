@@ -3,8 +3,8 @@
     ViewBag.Title = "UserLogin";
 }
 
-<h2>UserLogin</h2>
-@using (Html.BeginForm("ProductList", "Product", FormMethod.Get, new { id = Model.selectedUser }))
+<h2>User Login</h2>
+@using (Html.BeginForm("ProductList", "Product", FormMethod.Get))
 {
     @Html.DropDownListFor(m => m.selectedUser, new SelectList(Model.userList, "Id", "Name", Model.selectedUser))
     <input type="submit" value="Go" />

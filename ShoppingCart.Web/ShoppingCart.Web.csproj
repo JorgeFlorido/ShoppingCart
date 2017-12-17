@@ -150,7 +150,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ControllerNames.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Adapters\DbProductAdapter.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
@@ -197,7 +196,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\User\UserLogin.cshtml" />
-    <Content Include="Views\Purchase\UserPurchases.cshtml" />
+    <Content Include="Views\Purchase\SelectUserCart.cshtml" />
+    <Content Include="Views\Purchase\UserCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

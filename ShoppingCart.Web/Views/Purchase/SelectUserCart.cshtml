@@ -1,0 +1,10 @@
+﻿@model ShoppingCart.Service.CustomerListViewModel
+
+<h2>Select user cart</h2>
+
+@using (Html.BeginForm("UserCart", "Purchase", FormMethod.Get))
+{
+    @Html.DropDownListFor(m => m.selectedUser, new SelectList(Model.userList, "Id", "Name", Model.selectedUser))
+    <input type="submit" value="Go" />
+}
+

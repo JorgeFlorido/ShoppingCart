@@ -15,7 +15,11 @@ namespace ShoppingCart.Web.Controllers
 
         public ActionResult ProductList()
         {
-            TempData["UserId"] = Request.QueryString["selectedUser"];
+            if (Request.QueryString["selectedUser"] != null)
+            {
+                TempData["UserId"] = Request.QueryString["selectedUser"]; 
+            }
+
             var items = _productService.GetAllProducts();
             return View(items);
         }
@@ -23,8 +27,11 @@ namespace ShoppingCart.Web.Controllers
         [HttpPost]
         public ActionResult AddToCart(ProductViewModel item)
         {
-            var id = Int32.Parse(TempData["UserId"].ToString());
-            _productService.AddToCart(item, id);
+            if (TempData["UserId"] != null)
+            {
+                item.BuyerId = Int32.Parse(TempData["UserId"].ToString());
+                _productService.AddToCart(item); 
+            }
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
     }

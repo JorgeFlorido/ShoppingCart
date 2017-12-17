@@ -30,6 +30,7 @@ namespace ShoppingCart.Web
 
                     return Activator.CreateInstance(controllerType, customerService) as Controller;
 
+
                 case "Product":
 
                     IProductRepository productRepository = new DbProductAdapter();
@@ -37,6 +38,16 @@ namespace ShoppingCart.Web
                     IProductService productService = new ProductService(productRepository, purchaseRepository);
 
                     return Activator.CreateInstance(controllerType, productService) as Controller;
+
+                case "Purchase":
+
+                    IPurchaseRepository customerPurchaseRepository = new DbPurchaseAdapter();
+                    IPurchaseService purchaseService = new PurchaseService(customerPurchaseRepository);
+
+                    ICustomerRepository customerCartRepository = new DbCustomerAdapter();
+                    ICustomerService customerCartService = new CustomerService(customerCartRepository);
+
+                    return Activator.CreateInstance(controllerType, purchaseService, customerCartService) as Controller;
 
                 default:
                     break;

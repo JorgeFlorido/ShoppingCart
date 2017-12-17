@@ -34,7 +34,6 @@ namespace ShoppingCart.Service
         {
             Purchase purchase = new Purchase();
 
-            purchase.Id = purchaseVM.Id;
             purchase.ProductID = purchaseVM.ProductID;
             purchase.CustomerID = purchaseVM.CustomerID;
             purchase.Finished = purchaseVM.Finished;
