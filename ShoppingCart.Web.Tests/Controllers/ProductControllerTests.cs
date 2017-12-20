@@ -3,19 +3,32 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShoppingCart.Web.Controllers;
 using ShoppingCart.Service;
-using ShoppingCart.Data;
+using System.Web;
+using System.Collections.Specialized;
 
 namespace ShoppingCart.Web.Tests.Controllers
 {
     [TestClass]
     public class ProductControllerTests
     {
-        [TestMethod]
-        public void Index()
-        {
-            var productService = new Mock<IProductService>();
+        private NameValueCollection values;
 
+        [TestMethod]
+        public void ProductList()
+        {
             // Arrange
+            values = new NameValueCollection
+            {
+                {"selectedUser", "2" }
+            };
+
+            var context = new Mock<HttpContextBase>();
+            var request = new Mock<HttpRequestBase>();
+
+            request.Setup(q => q.QueryString).Returns(values);
+            context.Setup(r => r.Request).Returns(request.Object);
+
+            var productService = new Mock<IProductService>();
             ProductController controller = new ProductController(productService.Object);
 
             // Act
@@ -24,5 +37,7 @@ namespace ShoppingCart.Web.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+
+
     }
 }

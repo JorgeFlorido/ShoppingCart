@@ -17,7 +17,7 @@ namespace ShoppingCart.Web.Controllers
         {
             if (Request.QueryString["selectedUser"] != null)
             {
-                TempData["UserId"] = Request.QueryString["selectedUser"]; 
+                TempData["UserId"] = Request.QueryString["selectedUser"];
             }
 
             var items = _productService.GetAllProducts();
