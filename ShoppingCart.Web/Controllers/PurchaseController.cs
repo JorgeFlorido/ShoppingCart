@@ -28,12 +28,25 @@ namespace ShoppingCart.Web.Controllers
         {
             if (Request.QueryString["selectedUser"] != null)
             {
-                var id = Request.QueryString["selectedUser"];
+                Session["UserId"] = Request.QueryString["selectedUser"];
+                var id = Session["UserId"].ToString();
                 var items = _purchaseService.GetUserPurchases(Int32.Parse(id));
                 return View(items);
             }
 
             return View();
+        }
+
+        public ActionResult Checkout()
+        {
+            if (Session["UserId"] != null)
+            {
+                var id = Session["UserId"].ToString();
+                var items = _purchaseService.GetUserPurchases(Int32.Parse(id));
+                _purchaseService.FinishPurchases(items);
+            }
+
+            return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
     }
 }

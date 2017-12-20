@@ -17,7 +17,7 @@ namespace ShoppingCart.Web.Controllers
         {
             if (Request.QueryString["selectedUser"] != null)
             {
-                TempData["UserId"] = Request.QueryString["selectedUser"];
+                Session["UserId"] = Request.QueryString["selectedUser"];
             }
 
             var items = _productService.GetAllProducts();
@@ -27,9 +27,9 @@ namespace ShoppingCart.Web.Controllers
         [HttpPost]
         public ActionResult AddToCart(ProductViewModel item)
         {
-            if (TempData["UserId"] != null)
+            if (Session["UserId"] != null)
             {
-                item.BuyerId = Int32.Parse(TempData["UserId"].ToString());
+                item.BuyerId = Int32.Parse(Session["UserId"].ToString());
                 _productService.AddToCart(item); 
             }
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);

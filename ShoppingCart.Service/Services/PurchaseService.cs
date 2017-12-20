@@ -7,10 +7,14 @@ namespace ShoppingCart.Service
     public class PurchaseService : IPurchaseService
     {
         private IPurchaseRepository _purchaseRepository;
+        private IProductRepository _productRespository;
 
-        public PurchaseService(IPurchaseRepository purchaseRepository)
+        public PurchaseService(
+            IPurchaseRepository purchaseRepository, 
+            IProductRepository productRepository)
         {
             _purchaseRepository = purchaseRepository;
+            _productRespository = productRepository;
         }
 
         public IEnumerable<PurchaseViewModel> GetUserPurchases(int UserId)
@@ -33,9 +37,14 @@ namespace ShoppingCart.Service
         {
             foreach (var pvm in purchasesVM)
             {
-                var p = pvm.ConvertToEntity();
-                p.Finished = true;
-                _purchaseRepository.Update(p);
+                var purchase = _purchaseRepository.Get(pvm.Id);
+                var product = _productRespository.Get(pvm.ProductID);
+
+                product.Quantity = product.Quantity - pvm.Quantity;
+                purchase.Finished = true;
+
+                _purchaseRepository.Update(purchase);
+                _productRespository.Update(product);
             }
         }
     }

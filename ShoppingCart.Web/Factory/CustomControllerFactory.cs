@@ -1,7 +1,6 @@
 ﻿using ShoppingCart.Data;
 using ShoppingCart.Service;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
@@ -30,7 +29,6 @@ namespace ShoppingCart.Web
 
                     return Activator.CreateInstance(controllerType, customerService) as Controller;
 
-
                 case "Product":
 
                     IProductRepository productRepository = new DbProductAdapter();
@@ -42,7 +40,8 @@ namespace ShoppingCart.Web
                 case "Purchase":
 
                     IPurchaseRepository customerPurchaseRepository = new DbPurchaseAdapter();
-                    IPurchaseService purchaseService = new PurchaseService(customerPurchaseRepository);
+                    IProductRepository purchaseProductRepository = new DbProductAdapter();
+                    IPurchaseService purchaseService = new PurchaseService(customerPurchaseRepository, purchaseProductRepository);
 
                     ICustomerRepository customerCartRepository = new DbCustomerAdapter();
                     ICustomerService customerCartService = new CustomerService(customerCartRepository);

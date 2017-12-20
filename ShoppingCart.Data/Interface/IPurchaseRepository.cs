@@ -7,5 +7,6 @@ namespace ShoppingCart.Data
         IEnumerable<Purchase> GetUserPurchases(int id);
         void Add(Purchase purchase);
         void Update(object entity);
+        Purchase Get(int id);
     }
 }
