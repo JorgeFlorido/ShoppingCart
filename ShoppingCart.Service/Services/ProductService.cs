@@ -69,15 +69,21 @@ namespace ShoppingCart.Service
 
             if (canBuy)
             {
-                var purchase = new Purchase
+                try
                 {
-                    CustomerID = item.BuyerId,
-                    Finished = false,
-                    ProductID = item.Id,
-                    Quantity = item.QuantityToBuy
-                };
+                    var purchase = new Purchase
+                    {
+                        CustomerID = item.BuyerId,
+                        Finished = false,
+                        ProductID = item.Id,
+                        Quantity = item.QuantityToBuy
+                    };
 
-                _purchaseRespository.Add(purchase);
+                    _purchaseRespository.Add(purchase);
+                }
+                catch (Exception)
+                {
+                }
             }
 
             return canBuy;

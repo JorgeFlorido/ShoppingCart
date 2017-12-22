@@ -37,14 +37,29 @@ namespace ShoppingCart.Service
         {
             foreach (var pvm in purchasesVM)
             {
-                var purchase = _purchaseRepository.Get(pvm.Id);
-                var product = _productRespository.Get(pvm.ProductID);
+                try
+                {
+                    var purchase = _purchaseRepository.Get(pvm.Id);
+                    var product = _productRespository.Get(pvm.ProductID);
 
-                product.Quantity = product.Quantity - pvm.Quantity;
-                purchase.Finished = true;
+                    if (product != null && purchase != null)
+                    {
+                        // I would check here if the quantity is enough to finish de purchase
+                        // but how to act in that case wasn't defined in the specs (cancel
+                        // whole purchase or buy just available items), so I considered it
+                        // out of the scope of the test. It's previously checked in frontend
+                        // but anyway...
 
-                _purchaseRepository.Update(purchase);
-                _productRespository.Update(product);
+                        product.Quantity = product.Quantity - pvm.Quantity;
+                        purchase.Finished = true;
+
+                        _purchaseRepository.Update(purchase);
+                        _productRespository.Update(product); 
+                    }
+                }
+                catch (Exception)
+                {
+                }
             }
         }
     }
